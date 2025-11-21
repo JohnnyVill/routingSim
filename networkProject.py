@@ -98,6 +98,7 @@ def main():
     net.add_router("A")
     net.add_router("B")
     net.add_router("C")
+    net.add_router("D")
     #   to connect a node add the nodes name the node it want to connect to 
     #   and the dproc, dqueue, trans, packet size. dprop is 0 by default (packet size is optional)
     #ex) net.connect(node1, node1, 3, 4, 10, 80000) or  net.connect(node1, node1, 3, 4)
@@ -107,9 +108,10 @@ def main():
     net.connect("A", "B", 3, 10, 10)
     net.connect("B", "C", 2, 1, 10, 80000)
     net.connect("A", "C", 7, 7, 7, 60000)
+    net.connect("C", "D", 12,18,25,150000)
 
     net.show_network()
-    path, dest = net.routingAlgo("A", "C")
+    path, dest = net.routingAlgo("A", "D")
     print(f"Path: {net.printPath(path, dest)}")
 if __name__ == "__main__":
     main()
